@@ -1,7 +1,13 @@
 # FunctionalDataProgrammingPrj
 
-## Flying bus
+## Nuclear flying bus
 
+Fuel (uranium (mg))
+Available seats
+Next stop ID
+Distance to next stop
+Broken (true/false)
+Weather (hot/cold)
 
 ## Kafka
 
