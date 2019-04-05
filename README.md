@@ -14,6 +14,7 @@
 
 ```json
 {
+    "busId": 1,
     "fuel": 10,
     "seats": 15,
     "line": 1,
@@ -25,7 +26,7 @@
 ```
 
 ```json
-{"fuel": 10, "seats": 15, "line": 1, "nextStop": 3, "nextStopDistance": 1000, "broken": false, "weather": "cold"}
+{"busId": 1, "fuel": 10, "seats": 15, "line": 1, "nextStop": 3, "nextStopDistance": 1000, "broken": false, "weather": "cold"}
 ```
 
 
