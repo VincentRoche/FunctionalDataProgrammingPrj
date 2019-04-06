@@ -1,5 +1,5 @@
-{busId=1, broken=false, nextStop=1, fuel=100, line=1, weather=hot, nextStopDistance=1000, seats=50}
-{busId=1, broken=false, nextStop=1, fuel=100, line=1, weather=hot, nextStopDistance=1000, seats=50}
-{busId=1, broken=false, nextStop=1, fuel=100, line=1, weather=hot, nextStopDistance=1000, seats=50}
-{busId=1, broken=false, nextStop=1, fuel=100, line=1, weather=hot, nextStopDistance=1000, seats=50}
-{busId=1, broken=false, nextStop=1, fuel=100, line=1, weather=hot, nextStopDistance=1000, seats=50}
+{busId=1, broken=false, country={name=France, northHemisphere=true}, nextStop=1, fuel=100, line=1, weather=hot, totalKms=250000, nextStopDistance=1000, seats=50}
+{busId=1, broken=false, country={name=France, northHemisphere=true}, nextStop=1, fuel=100, line=1, weather=hot, totalKms=250000, nextStopDistance=1000, seats=50}
+{busId=1, broken=false, country={name=France, northHemisphere=true}, nextStop=1, fuel=100, line=1, weather=hot, totalKms=250000, nextStopDistance=1000, seats=50}
+{busId=1, broken=false, country={name=France, northHemisphere=true}, nextStop=1, fuel=100, line=1, weather=hot, totalKms=250000, nextStopDistance=1000, seats=50}
+{busId=1, broken=false, country={name=France, northHemisphere=true}, nextStop=1, fuel=100, line=1, weather=hot, totalKms=250000, nextStopDistance=1000, seats=50}
