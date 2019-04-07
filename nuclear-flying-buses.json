@@ -1,1 +1,7 @@
 {"busId": 1, "fuel": 10, "seats": 15, "line": 1, "nextStop": 3, "nextStopDistance": 1000, "totalKms": 250000, "broken": false, "weather": "cold", "country": { "name": "France", "northHemisphere": true }}
+{"busId": 2, "fuel": 10, "seats": 15, "line": 1, "nextStop": 3, "nextStopDistance": 1000, "totalKms": 250000, "broken": false, "weather": "cold", "country": { "name": "France", "northHemisphere": false }}
+{"busId": 3, "fuel": 10, "seats": 15, "line": 1, "nextStop": 3, "nextStopDistance": 1000, "totalKms": 250000, "broken": false, "weather": "cold", "country": { "name": "France", "northHemisphere": false }}
+{"busId": 4, "fuel": 10, "seats": 15, "line": 1, "nextStop": 3, "nextStopDistance": 1000, "totalKms": 250000, "broken": false, "weather": "cold", "country": { "name": "France", "northHemisphere": true }}
+{"busId": 5, "fuel": 10, "seats": 15, "line": 1, "nextStop": 3, "nextStopDistance": 1000, "totalKms": 250000, "broken": false, "weather": "cold", "country": { "name": "France", "northHemisphere": false }}
+{"busId": 6, "fuel": 10, "seats": 15, "line": 1, "nextStop": 3, "nextStopDistance": 1000, "totalKms": 250000, "broken": false, "weather": "cold", "country": { "name": "France", "northHemisphere": false }}
+{"busId": 7, "fuel": 10, "seats": 15, "line": 1, "nextStop": 3, "nextStopDistance": 1000, "totalKms": 250000, "broken": false, "weather": "cold", "country": { "name": "France", "northHemisphere": true }}
