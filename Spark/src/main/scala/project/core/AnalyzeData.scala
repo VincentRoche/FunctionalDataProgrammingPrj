@@ -24,7 +24,31 @@ object AnalyzeData extends App {
 
   }
 
+  /* Print all data */
+
   loadData().collect().foreach(println)
+
+  /* ***********************************************************************
+  ************************************************************************
+  **************************** ANALYSIS ********************************
+  ********************************************************************
+  ******************************************************************
+   */
+
+  // print broken ones with hot and cold weather
+  // loadData().flatMap{case t if (t.weather == "hot" || t.weather == "cold") && t.broken == true => Some(t) case t =>  None}.filter(_ != None).foreach(println)
+
+  // Is there more failing devices when the weather is hot or cold ?
+  //loadData().filter(tuple => tuple.weather == "weather" || tuple.weather == "hot").List.length()
+  println(" -------- Is there more failing devices when the weather is hot or cold ? -------- ")
+  loadData().flatMap{case t if (t.weather == "hot" || t.weather == "cold") && t.broken == true => Some(t) case t =>  None}.filter(_ != None).groupBy(_.weather).mapValues(_.size).foreach(println)
+
+  /* ***********************************************************************
+  ************************************************************************
+  **************************** SIMPLE QUERIES **************************
+  ********************************************************************
+  ******************************************************************
+   */
 
   /* Number of nuclear flying buses in the northern hemisphere */
   println("Number of nuclear flying buses in the northern hemisphere : " + loadData().filter(_.country.northHemisphere == false).count())
@@ -34,6 +58,11 @@ object AnalyzeData extends App {
 
   println(" => List of nuclear flying buses in the northern hemisphere : ")
   loadData().groupBy(_.country.northHemisphere == false).foreach(println)
+
+  /* Nuclear Flying buses sorted by kms */
+  println(" -------- Nuclear flying buses sorted by kms --------- ")
+  loadData().sortBy(_.totalKms, ascending = false).foreach(println)
+
 
 
 }
