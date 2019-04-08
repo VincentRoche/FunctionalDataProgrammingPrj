@@ -3,35 +3,39 @@
 ## Nuclear flying bus
 
 * Fuel (uranium (mg))
-* Available seat
+* Total seats
+* Passengers in the bus
 * Line
 * Next stop ID
 * Distance to next stop (m)
+* Total kilometers travelled
 * Broken (true/false)
 * Weather (hot/cold)
+* Country (name, is in North emisphere)
 
 ### Json representation
 
 ```json
-{
-    "busId": 1,
-    "fuel": 10,
-    "seats": 15,
-    "line": 1,
-    "nextStop": 3,
-    "nextStopDistance": 1000,
-    "totalKms": 250000,
-    "broken": false,
-    "weather": "cold",
-    "country": {
-        "name": "France",
-        "northHemisphere": true
+{  
+    "busId":1,
+    "fuel":99,
+    "seats":50,
+    "passengers":0,
+    "line":1,
+    "nextStop":1,
+    "nextStopDistance":767,
+    "totalKms":250233,
+    "broken":false,
+    "weather":"hot",
+    "country":{  
+        "name":"France",
+        "northHemisphere":true
     }
 }
 ```
 
 ```json
-{"busId": 1, "fuel": 10, "seats": 15, "line": 1, "nextStop": 3, "nextStopDistance": 1000, "totalKms": 250000, "broken": false, "weather": "cold", "country": { "name": "France", "northHemisphere": true }}
+{"busId": 1, "fuel": 99, "seats": 50, "passengers": 0, "line": 1, "nextStop": 1, "nextStopDistance": 767, "totalKms": 250233, "broken": false, "weather": "hot", "country": { "name": "France", "northHemisphere": true }}
 ```
 
 
@@ -55,16 +59,16 @@ Create topic:
 kafka_2.12-2.1.0/bin/kafka-topics.sh --create --topic nuclear-flying-buses --zookeeper localhost:2181 --partitions 1 --replication-factor 1
 ```
 
-Start producer:
-
-```bash
-kafka_2.12-2.1.0/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic nuclear-flying-buses
-```
-
 Start Json file writer:
 
 ```bash
 kafka_2.12-2.1.0/bin/connect-standalone.sh kafka_2.12-2.1.0/config/connect-standalone.properties kafka_2.12-2.1.0/config/connect-console-sink.properties
+```
+
+Start producer (not needed):
+
+```bash
+kafka_2.12-2.1.0/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic nuclear-flying-buses
 ```
 
 Start consumer (not needed):
