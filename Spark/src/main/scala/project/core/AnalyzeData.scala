@@ -38,10 +38,17 @@ object AnalyzeData extends App {
   // print broken ones with hot and cold weather
   // loadData().flatMap{case t if (t.weather == "hot" || t.weather == "cold") && t.broken == true => Some(t) case t =>  None}.filter(_ != None).foreach(println)
 
-  // Is there more failing devices when the weather is hot or cold ?
+  // Is there more broken buses when the weather is hot or cold ?
   //loadData().filter(tuple => tuple.weather == "weather" || tuple.weather == "hot").List.length()
-  println(" -------- Is there more failing devices when the weather is hot or cold ? -------- ")
+  println(" -------- Is there more broken buses when the weather is hot or cold ? -------- ")
   loadData().flatMap{case t if (t.weather == "hot" || t.weather == "cold") && t.broken == true => Some(t) case t =>  None}.filter(_ != None).groupBy(_.weather).mapValues(_.size).foreach(println)
+
+  // Is there more broken buses in the northern or the souther hemisphere ?
+  println(" -------- Is there more broken buses when the weather is hot or cold ? -------- ")
+  loadData().groupBy(_.country.northHemisphere).mapValues(_.size).foreach(println)
+
+  // Amoung the broken buses, how many are because of an empty fuel tank
+  println(" => Amoung the broken buses, how many are because of an empty fuel tank : " + loadData().filter(tuple => (tuple.broken == false && tuple.fuel == 0)).count())
 
   /* ***********************************************************************
   ************************************************************************
@@ -49,7 +56,7 @@ object AnalyzeData extends App {
   ********************************************************************
   ******************************************************************
    */
-
+/*
   /* Number of nuclear flying buses in the northern hemisphere */
   println("Number of nuclear flying buses in the northern hemisphere : " + loadData().filter(_.country.northHemisphere == false).count())
 
@@ -63,6 +70,6 @@ object AnalyzeData extends App {
   println(" -------- Nuclear flying buses sorted by kms --------- ")
   loadData().sortBy(_.totalKms, ascending = false).foreach(println)
 
-
+*/
 
 }
