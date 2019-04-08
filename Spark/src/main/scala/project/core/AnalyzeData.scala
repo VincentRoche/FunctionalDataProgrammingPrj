@@ -27,11 +27,13 @@ object AnalyzeData extends App {
   loadData().collect().foreach(println)
 
   /* Number of nuclear flying buses in the northern hemisphere */
-  println("Number of nuclear flying buses in the northern hemisphere : ")
-  //loadData().filter(_.country.northHemisphere == false).count()
+  println("Number of nuclear flying buses in the northern hemisphere : " + loadData().filter(_.country.northHemisphere == false).count())
+
+  /* Number of nuclear flying buses in the southern hemisphere */
+  println("Number of nuclear flying buses in the southern hemisphere : " + loadData().filter(_.country.northHemisphere == true).count())
 
   println(" => List of nuclear flying buses in the northern hemisphere : ")
   loadData().groupBy(_.country.northHemisphere == false).foreach(println)
 
-  /* Number of nuclear flying buses in the southern hemisphere */
+
 }
