@@ -13,7 +13,7 @@ weathers=("hot" "cold" "hot")
 countries=("France" "Australia" "France")
 northHemisphere=(true false true)
 
-for i in {1..5}
+for i in {1..50}
 do
     # Updating all the buses
     for i in ${!busIds[*]}
@@ -29,6 +29,14 @@ do
         newWeather=${weathers[i]}
         country=${countries[i]}
         isNorthHemisphere=${northHemisphere[i]}
+
+        # Random weather
+        if [[ $(( RANDOM % 2 )) -eq 0 ]]
+        then
+            newWeather="hot"
+        else
+            newWeather="cold"
+        fi
 
         # Randomly breaks
         if [[ $newBroken = false  && ( $newFuel -le 0 || $(( RANDOM % 10 )) -eq 0 ) ]]
