@@ -1,45 +1,28 @@
 # FunctionalDataProgrammingPrj
 
-## Nuclear flying bus
+## Use case
 
-* Fuel (uranium (mg))
-* Total seats
-* Passengers in the bus
-* Line
+We chose to create a big data architecture for a fleet of nuclear flying buses, a brand new transportation system that will obviously become the safest one.
+Even though our buses can fly above regular traffic, they are organized in lines and stops like regular buses.
+The buses regularly send data to the big data datacenter to tell their status, this data includes:
+
+* Remaining fuel (uranium in milligrams)
+* Total seats in the bus
+* Passengers currently in the bus
+* Line number
 * Next stop ID
-* Distance to next stop (m)
+* Distance to the next stop (meters)
 * Total kilometers travelled
-* Broken (true/false)
-* Weather (hot/cold)
-* Country (name, is in North emisphere)
-
-### Json representation
-
-```json
-{  
-    "busId":1,
-    "fuel":99,
-    "seats":50,
-    "passengers":0,
-    "line":1,
-    "nextStop":1,
-    "nextStopDistance":767,
-    "totalKms":250233,
-    "broken":false,
-    "weather":"hot",
-    "country":{  
-        "name":"France",
-        "northHemisphere":true
-    }
-}
-```
-
-```json
-{"busId": 1, "fuel": 99, "seats": 50, "passengers": 0, "line": 1, "nextStop": 1, "nextStopDistance": 767, "totalKms": 250233, "broken": false, "weather": "hot", "country": { "name": "France", "northHemisphere": true }}
-```
+* Whereas the bus is broken or not
+* The weather (hot/cold)
+* Country (name, North or South emisphere)
 
 
-## Kafka
+## Lauching the project
+
+### Kafka
+
+Download the repository, open a terminal in it, and type the following commands to run Kafka:
 
 Start zookeeper:
 
@@ -47,13 +30,13 @@ Start zookeeper:
 kafka_2.12-2.1.0/bin/zookeeper-server-start.sh kafka_2.12-2.1.0/config/zookeeper.properties
 ```
 
-Start server:
+In a new terminal, start server:
 
 ```bash
 kafka_2.12-2.1.0/bin/kafka-server-start.sh kafka_2.12-2.1.0/config/server.properties
 ```
 
-Create topic:
+In a new terminal, create the topic:
 
 ```bash
 kafka_2.12-2.1.0/bin/kafka-topics.sh --create --topic nuclear-flying-buses --zookeeper localhost:2181 --partitions 1 --replication-factor 1
@@ -65,20 +48,27 @@ Start Json file writer:
 kafka_2.12-2.1.0/bin/connect-standalone.sh kafka_2.12-2.1.0/config/connect-standalone.properties kafka_2.12-2.1.0/config/connect-console-sink.properties
 ```
 
-Start producer (not needed):
+#### Real time monitoring with Scala
+
+Open the **NuclearBusesKafka** Scala project in IntelliJ and run the **MyConsumer** class. The Scala project now listens for messages in the *nuclear-flying-buses* topic.
+
+Back to the terminal run the producer script to write some random data in the topic:
 
 ```bash
-kafka_2.12-2.1.0/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic nuclear-flying-buses
+./produce-messages.sh
 ```
 
-Start consumer (not needed):
+When a bus breaks, a message is displayed in the IntelliJ console.
 
-```bash
-kafka_2.12-2.1.0/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic nuclear-flying-buses --from-beginning
-```
 
-Delete topic (not needed):
+### Spark
 
-```bash
-kafka_2.12-2.1.0/bin/kafka-topics.sh --delete --zookeeper localhost:2181 --topic nuclear-flying-buses
-```
+Open the **Spark** Scala project in IntelliJ and run the **AnalyzeData** class. Bus data is analyzed and results are displayed in the IntelliJ console.
+
+
+## Architecture
+
+1. The bash script produces messages to the *nuclear-flying-buses* topic (buses move, passengers board and get off, weather changes, buses break...).
+    * A Kafka Consumer in Scala consumes the topic messages and analyzes buses' status.
+    * Messages are also written in the *nuclear-flying-buses.json* file.
+2. A separately run Spark project reads the *nuclear-flying-buses.json* file to analyze its data.

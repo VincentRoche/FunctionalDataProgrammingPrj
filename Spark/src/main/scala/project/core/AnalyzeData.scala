@@ -47,13 +47,13 @@ object AnalyzeData extends App {
 
   // Is there more broken buses when the weather is hot or cold ?
   //loadData().filter(tuple => tuple.weather == "weather" || tuple.weather == "hot").List.length()
-  println(" -------- Is there more broken buses when the weather is hot or cold ? -------- ")
+  println(" -------- Are there more broken buses when the weather is hot or cold ? -------- ")
   loadData().flatMap{case t if (t.weather == "hot" || t.weather == "cold") && t.broken == true => Some(t) case t =>  None}.filter(_ != None).groupBy(_.weather).mapValues(_.size).foreach(println)
 
   println("\n")
 
   // Is there more broken buses in the northern or the souther hemisphere ?
-  println(" -------- Is there more broken buses in the northern hemisphere ? -------- ")
+  println(" -------- Are there more broken buses in the northern hemisphere ? -------- ")
   //loadData().groupBy(_.country.northHemisphere).mapValues(_.size).foreach(println)
   loadData().groupBy(_.country.northHemisphere).mapValues(_.size).foreach(println)
   // loadData().groupBy(record => (record.busId, record.country.northHemisphere)).mapValues(_.size).foreach(println)
