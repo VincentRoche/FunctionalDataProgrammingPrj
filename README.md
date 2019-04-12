@@ -3,7 +3,9 @@
 ## Use case
 
 We chose to create a big data architecture for a fleet of nuclear flying buses, a brand new transportation system that will obviously become the safest one.
+
 Even though our buses can fly above regular traffic, they are organized in lines and stops like regular buses.
+
 The buses regularly send data to the big data datacenter to tell their status, this data includes:
 
 * Remaining fuel (uranium in milligrams)
@@ -52,7 +54,7 @@ kafka_2.12-2.1.0/bin/connect-standalone.sh kafka_2.12-2.1.0/config/connect-stand
 
 Open the **NuclearBusesKafka** Scala project in IntelliJ and run the **MyConsumer** class. The Scala project now listens for messages in the *nuclear-flying-buses* topic.
 
-Back to the terminal run the producer script to write some random data in the topic:
+Back to the terminal, run the producer script to write some random data in the topic:
 
 ```bash
 ./produce-messages.sh
@@ -68,7 +70,7 @@ Open the **Spark** Scala project in IntelliJ and run the **AnalyzeData** class. 
 
 ## Architecture
 
-1. The bash script produces messages to the *nuclear-flying-buses* topic (buses move, passengers board and get off, weather changes, buses break...).
+1. The bash script produces messages in the *nuclear-flying-buses* topic (buses move, passengers board and get off, weather changes, buses break...).
     * A Kafka Consumer in Scala consumes the topic messages and analyzes buses' status.
     * Messages are also written in the *nuclear-flying-buses.json* file.
 2. A separately run Spark project reads the *nuclear-flying-buses.json* file to analyze its data.
