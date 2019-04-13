@@ -1,19 +1,19 @@
 #!/bin/bash
 
-busIds=(1 2 3)
-fuel=(100 100 100)
+busIds=(1 2 3 4 5)
+fuel=(100 76 100 89 12)
 seats=50
-passengers=(0 16 39)
-lines=(1 2 1)
-nextStops=(1 1 5)
-nextStopDistances=(1000 500 850)
-totalKms=(250000 10000 400000)
-broken=("false" "false" "false")
-weathers=("hot" "cold" "hot")
-countries=("France" "Australia" "France")
-northHemisphere=(true false true)
+passengers=(0 16 39 49 49)
+lines=(1 2 1 3 4)
+nextStops=(1 1 5 2 9)
+nextStopDistances=(1000 500 850 888 10)
+totalKms=(250000 10000 400000 3333 4444)
+broken=("false" "false" "false" "false" "false")
+weathers=("hot" "cold" "hot" "hot" "cold")
+countries=("France" "Australia" "France" "Germany" "Argentina")
+northHemisphere=(true false true, true false)
 
-for i in {1..50}
+for i in {1..30}
 do
     # Updating all the buses
     for i in ${!busIds[*]}
@@ -53,7 +53,7 @@ do
             # If the bus arrived at the stop, passengers change, then go to next stop
             if [ $newNextStopDist -le 0 ]
             then
-                newPassengers=$(( $newPassengers + RANDOM % 40 - 20 ))
+                newPassengers=$(( $newPassengers + RANDOM % 60 - 30 ))
                 if [ $newPassengers -lt 0 ]
                 then
                     newPassengers=0
