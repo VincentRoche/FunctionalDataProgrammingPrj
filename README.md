@@ -1,5 +1,10 @@
 # FunctionalDataProgrammingPrj
 
+By **Mathieu ETCHEPARE**, **Kilian POULIN** and **Vincent ROCHE**
+
+Efrei Paris, M1 Software Engineering
+
+
 ## Use case
 
 We chose to create a big data architecture for a fleet of nuclear flying buses, a brand new transportation system that will obviously become the safest one.
