@@ -11,7 +11,7 @@ totalKms=(250000 10000 400000 3333 4444)
 broken=("false" "false" "false" "false" "false")
 weathers=("hot" "cold" "hot" "hot" "cold")
 countries=("France" "Australia" "France" "Germany" "Argentina")
-northHemisphere=(true false true, true false)
+northHemisphere=(true false true true false)
 
 for i in {1..30}
 do
@@ -39,7 +39,7 @@ do
         fi
 
         # Randomly breaks
-        if [[ $newBroken = false  && ( $newFuel -le 0 || $(( RANDOM % 10 )) -eq 0 ) ]]
+        if [[ $newBroken = false  && ( $newFuel -le 0 || $(( RANDOM % 15 )) -eq 0 ) ]]
         then
             newBroken=true
         fi
