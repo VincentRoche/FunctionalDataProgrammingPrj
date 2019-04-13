@@ -8,6 +8,7 @@ object FlyingBus {
                  busId : Int,
                  fuel : Int,
                  seats : Int,
+                 passengers : Int,
                  line : Int,
                  nextStop : Int,
                  nextStopDistance : Int,
